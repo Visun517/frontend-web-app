@@ -8,7 +8,7 @@ import type {
   EnrollmentFormData,
 } from "@/types";
 
-const API_GATEWAY = process.env.NEXT_PUBLIC_API_GATEWAY_URL || "http://localhost:7000";
+const API_GATEWAY = process.env.NEXT_PUBLIC_API_URL || "http://localhost:7000";
 
 const api = axios.create({
   baseURL: API_GATEWAY,
@@ -20,6 +20,7 @@ const api = axios.create({
 export const studentApi = {
   getAll: async (): Promise<Student[]> => {
     const { data } = await api.get("/api/v1/students");
+    console.log(data);
     return data;
   },
 
