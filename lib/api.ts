@@ -20,7 +20,6 @@ const api = axios.create({
 export const studentApi = {
   getAll: async (): Promise<Student[]> => {
     const { data } = await api.get("/api/v1/students");
-    console.log(data);
     return data;
   },
 
@@ -38,9 +37,7 @@ export const studentApi = {
     if (formData.email) form.append("email", formData.email);
     if (formData.picture) form.append("picture", formData.picture);
 
-    const { data } = await api.post("/api/v1/students", form, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
+    const { data } = await axios.post(`${API_GATEWAY}/api/v1/students`, form);
     return data;
   },
 
@@ -52,9 +49,7 @@ export const studentApi = {
     if (formData.email) form.append("email", formData.email);
     if (formData.picture) form.append("picture", formData.picture);
 
-    const { data } = await api.put(`/api/v1/students/${nic}`, form, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
+    const { data } = await axios.put(`${API_GATEWAY}/api/v1/students/${nic}`, form);
     return data;
   },
 
@@ -63,7 +58,7 @@ export const studentApi = {
   },
 
   getPictureUrl: (nic: string): string =>
-    `${API_GATEWAY}/api/v1/students/${nic}/picture`,
+      `${API_GATEWAY}/api/v1/students/${nic}/picture`,
 };
 
 // ─── Program API ───────────────────────────────────────────────────────────────
