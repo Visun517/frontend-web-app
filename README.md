@@ -84,40 +84,42 @@ webapp/
 └── .env.local                # Environment configurations
 ```
 
-⚙️ Getting Started (Local Development)
+## ⚙️ Getting Started (Local Development)
 
-⚠️ Prerequisites: To ensure the frontend functions correctly, all backend services must be up and running locally or remotely.
+> **⚠️ Prerequisites:** To ensure the frontend functions correctly, all backend services must be up and running locally or remotely.
 
-Recommended Microservices Startup Order:
+**Recommended Microservices Startup Order:**
+1. Config-Server (`9000`)
+2. Service-Registry (`9001`)
+3. Api-Gateway (`7000`)
+4. Student-Service (`Random Port / 0`)
+5. Program-Service (`Random Port / 0`)
+6. Enrollment-Service (`Random Port / 0`)
+7. **Webapp** (`3000`)
 
-Config-Server (9000)
+*(Note: Backend microservices run on random ports and are accessed dynamically via the API Gateway running on port 7000).*
 
-Service-Registry (9001)
+### 1. Environment Variables
 
-Api-Gateway (7000)
+Create a `.env.local` file in the root `webapp/` directory and configure your API Gateway endpoint:
 
-Student-Service (Random Port / 0)
-
-Program-Service (Random Port / 0)
-
-Enrollment-Service (Random Port / 0)
-
-Webapp (3000)
-
-(Note: Backend microservices run on random ports and are accessed dynamically via the API Gateway running on port 7000).
-
-1. Environment Variables
-Create a .env.local file in the root webapp/ directory and configure your API Gateway endpoint:
-
-Code snippet
+```env
 NEXT_PUBLIC_API_URL=http://localhost:7000
-2. Installation & Run
+```
+
+### 1. Environment Variables
+
 Open your terminal and execute the following commands:
 
-Bash
 # Install required dependencies:
+
+```text
 npm install
+```
 
 # Start the development server:
+
+```text
 npm run dev
-The application will be available at http://localhost:3000
+```
+The application will be available at http://localhost:3000.
