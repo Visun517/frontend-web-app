@@ -1,39 +1,58 @@
-# Webapp
+# 🎓 ECA Campus Management System - Frontend Web Application
 
-A modern frontend application for the ECA Campus Management System. It provides a full UI for managing students, academic programs, and enrollments through the API Gateway.
+A modern frontend application for the ECA Campus Management System. It provides a full UI for managing students, academic programs, and enrollments through the API Gateway. 
 
-## About
+**Live Deployed Application URL:** [http://34.126.159.127](http://34.126.159.127)  
+*(Deployed on Google Cloud Run behind a Regional External Application Load Balancer)*
 
-This project is part of the Enterprise Cloud Application (ECA) module in the Higher Diploma in Software Engineering (HDSE) program at the Institute of Software Engineering (IJSE). It is intended exclusively for students enrolled in this program.
+---
 
-## Tech Stack
+## 📌 Student & Project Information (Mandatory)
+
+| Field | Details |
+|---|---|
+| **Student Name** | Visun Prabodha |
+| **Student Number** | 241711009 |
+| **Slack Handle** | Visun Prabodha  |
+| **GCP Project ID** | `visun-gcp-lab` |
+| **Submission Type** | Alternative Option (Capstone Project) |
+
+---
+
+## 📖 About
+
+This project is submitted for the Enterprise Cloud Architecture (ITS 2130) module in the Higher Diploma in Software Engineering (HDSE) program at the Institute of Software Engineering (IJSE). 
+
+The frontend consumes backend microservices deployed on Google Cloud Platform (GCP). It features **Cloud Storage integration** where student profile pictures are successfully uploaded and fetched directly from a GCP Cloud Storage Bucket.
+
+## 🛠️ Tech Stack
 
 | Technology | Details |
 |---|---|
-| Next.js | 16.1.6 (App Router) |
-| React | 19.2.3 |
-| TypeScript | 5 |
-| Tailwind CSS | 4 |
-| ShadCN UI | Component library (Radix UI primitives) |
-| React Hook Form | Form state management |
-| Zod | Schema validation |
-| Axios | HTTP client |
-| Lucide React | Icon set |
-| Sonner | Toast notifications |
-| date-fns | Date formatting |
+| **Next.js** | 16.1.6 (App Router) |
+| **React** | 19.2.3 |
+| **TypeScript** | 5 |
+| **Tailwind CSS** | 4 |
+| **ShadCN UI** | Component library (Radix UI primitives) |
+| **React Hook Form** | Form state management |
+| **Zod** | Schema validation |
+| **Axios** | HTTP client |
+| **Lucide React** | Icon set |
+| **Sonner** | Toast notifications |
+| **date-fns** | Date formatting |
 
-## Features
+## ✨ Features
 
 | Page | Path | Description |
 |---|---|---|
 | Dashboard | `/dashboard` | Stats overview, recent enrollments, quick actions |
-| Students | `/students` | Create, view, edit, delete students with avatar display |
+| Students | `/students` | Create, view, edit, delete students with GCP Bucket avatar display |
 | Programs | `/programs` | Create, view, edit, delete programs (card & table views) |
 | Enrollments | `/enrollments` | Create, view, edit, delete enrollments with program filtering |
 
-## Project Structure
+## 📂 Project Structure
 
-```
+```text
 webapp/
 ├── app/
 │   ├── layout.tsx            # Root layout (Sidebar + Header + Toaster)
@@ -57,19 +76,8 @@ webapp/
 ├── types/
 │   └── index.ts              # Shared TypeScript types
 └── .env.local                # Environment variables
-```
 
-## Environment Variables
-
-Create a `.env.local` file in the `webapp/` directory:
-
-```env
-NEXT_PUBLIC_API_GATEWAY_URL=http://localhost:7000
-```
-
-## Getting Started
-
-Follow the lecture guidelines, refer to the lecture video for more information and how to get started correctly.
+## ⚙️ Getting Started (Local Development)
 
 > **Prerequisites:** All backend services (Config-Server, Service-Registry, Api-Gateway, Student-Service, Program-Service, Enrollment-Service) must be running before starting the webapp.
 
@@ -77,25 +85,24 @@ Follow the lecture guidelines, refer to the lecture video for more information a
 1. Config-Server (`9000`)
 2. Service-Registry (`9001`)
 3. Api-Gateway (`7000`)
-4. Student-Service (`8000`)
-5. Program-Service (`8001`)
-6. Enrollment-Service (`8002`)
+4. Student-Service (`Random Port / 0`)
+5. Program-Service (`Random Port / 0`)
+6. Enrollment-Service (`Random Port / 0`)
 7. **Webapp** (`3000`)
 
-Install dependencies:
+*(Note: Backend microservices run on random ports and are accessed dynamically via the API Gateway running on port 7000).*
 
-```bash
+### Environment Variables
+
+Create a `.env.local` file in the `webapp/` directory:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:7000
+
+```Installation & Run
+#Install dependencies:
 npm install
-```
 
-Start the development server:
-
-```bash
+#Start the development server:
 npm run dev
-```
 
-The application will be available at: `http://localhost:3000`
-
-## Need Help?
-
-If you encounter any issues, feel free to reach out and start a discussion via the Slack workspace.
